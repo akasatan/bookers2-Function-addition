@@ -5,8 +5,10 @@ class BookCommentsController < ApplicationController
     @book_comment = current_user.book_comments.new(book_comment_params)
     if @book_comment.save
       redirect_to book_path(@book), notice: "You have created comment successfully."
-    else 
-      redirect_to book_path(@book)
+    else
+      @newbook = Book.new
+      @book_comments = @book.book_comments
+      render template: 'books/show'
     end
   end
 
@@ -15,7 +17,7 @@ class BookCommentsController < ApplicationController
     if @book_comment.destroy
       redirect_to book_path(@book), notice: "You have delete comment successfully."
     else
-      redirect_to book_path(@book)
+      render template: 'books/show'
     end
   end
 

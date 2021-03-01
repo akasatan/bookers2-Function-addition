@@ -37,3 +37,9 @@ div {
     margin-bottom: 10px;
   }
 }
+.red-heart, {
+  color: red;
+}
+.red-heart:hover, {
+  text-decoration: underline red;
+}
