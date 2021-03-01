@@ -5,6 +5,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @newbook = Book.new
+    @book_comments = @book.book_comments
+    @book_comment = BookComment.new
   end
 
   def index
@@ -24,9 +26,6 @@ class BooksController < ApplicationController
   end
 
   def edit
-    unless @book.user_id == current_user.id
-      redirect_to books_path
-    end
   end
 
 
