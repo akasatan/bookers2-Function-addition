@@ -8,23 +8,31 @@ class User < ApplicationRecord
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
-  #followerが自分がしてるfollowedがされてる
-  #controllerで使うモデルが上、下がviewで使う
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :follower_users, through: :follower, source: :followed
-  #受け身の定義。あまり使わない
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followed_users, through: :followed, source: :follower
+  #userﾃｰﾌﾞﾙ→relationﾃｰﾌﾞﾙ、follower_idをviewに送る（参照）
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  #relationﾃｰﾌﾞﾙ→followedﾃｰﾌﾞﾙ、followed_idを送る（受け渡し）
+  has_many :followings, through: :relationships, source: :followed
+  
+  #followerﾃｰﾌﾞﾙ(本当はuser)→re_relationﾃｰﾌﾞﾙ(本当relation)へfollowed_idを送る(参照）
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  #re_relationﾃｰﾌﾞﾙ→userﾃｰﾌﾞﾙへfollower_idを送る（受け渡し）
+  has_many :followers, through: :reverse_of_relationships, source: :follower
   
   
   
   attachment :profile_image, destroy: false
-
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
   
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
 
   def following?(user)
-    follower_users.include?(user)
+    followings.include?(user)
   end
 end
