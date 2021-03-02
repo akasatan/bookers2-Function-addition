@@ -9,10 +9,13 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   
   #followerが自分がしてるfollowedがされてる
-  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-  has_many :followers, through: :relationships, source: :follower
-  has_many :reverse_relationships, class_name: "relationships", foreign_key: "followed_id", dependent: :destroy
-  has_many :followeds, through: :reverse_relationships, source: :followed
+  #controllerで使うモデルが上、下がviewで使う
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :follower_users, through: :follower, source: :followed
+  #受け身の定義。あまり使わない
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followed_users, through: :followed, source: :follower
+  
   
   
   attachment :profile_image, destroy: false
@@ -20,17 +23,8 @@ class User < ApplicationRecord
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
   
-  def follow(other_user)
-    unless self == other_user
-    relationships.find_by(follower: other_user)
-    end
-  end
 
   def following?(user)
-    followers.include?(user)
-  end
-
-  def unfollow(other_user)
-    relationships.find(follower_id).destroy
+    follower_users.include?(user)
   end
 end

@@ -1,16 +1,23 @@
 class RelationshipsController < ApplicationController
+  
+  def follower_index
+    @user = User.find(params[:id])
+  end
+  
+  def followed_index
+    @user = User.find(params[:id])
+  end
+  
   def create
-    @other_user = User.find(params[:follower_id])
-    follower = current_user.follow(@other_user)
-      if follower.save
-        redirect_to users_path(@other_user), notice: 'ユーザーをフォローしました'
-      else
-        redirect_to users_path(@other_user), notice: 'ユーザーのフォローに失敗しました'
-      end
+    follow = current_user.follower.new(followed_id: params[:user_id])
+    follow.save
+    redirect_to request.referer
   end
 
   def destroy
-    @user = current_user.relationships.find(params[:follower_id]).follower
-    current_user.unfollow(params[:id])
+    follow = current_user.follower.find_by(followed_id: params[:user_id])
+    follow.destroy
+    redirect_to request.referer
   end
+  
 end
