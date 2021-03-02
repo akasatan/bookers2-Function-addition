@@ -28,8 +28,6 @@ class BooksController < ApplicationController
   def edit
   end
 
-
-
   def update
     if @book.update(book_params)
       redirect_to book_path(@book), notice: "You have updated book successfully."
@@ -41,6 +39,20 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to books_path
+  end
+
+  def Book.search(search, user_or_book, search_option)
+    if search_option == "1"
+      Book.where(['title LIKE ?', "#{search}"])
+    elsif search_option == "2"
+      Book.where(['title LIKE ?', "#{search}%"])
+    elsif search_option == "3"
+      Book.where(['title LIKE ?', "%#{search}"])
+    elsif search_option == "4"
+      Book.where(['title LIKE ?', "%#{search}%"])
+    else    
+      Book.all
+    end
   end
 
   private

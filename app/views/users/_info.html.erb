@@ -10,7 +10,7 @@
   </tr>
   <tr>
     <th>follows</th>
-    <th>
+    <th><!--user.idがshow画面、follow_idにuser.idが入るという事？なるほど分からん-->
       <%= link_to followings_user_relationship_path(user.id, user.id) do %>
         <%= user.followings.count %>
       <% end %>
