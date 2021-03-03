@@ -41,20 +41,6 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  def Book.search(search, user_or_book, search_option)
-    if search_option == "1"
-      Book.where(['title LIKE ?', "#{search}"])
-    elsif search_option == "2"
-      Book.where(['title LIKE ?', "#{search}%"])
-    elsif search_option == "3"
-      Book.where(['title LIKE ?', "%#{search}"])
-    elsif search_option == "4"
-      Book.where(['title LIKE ?', "%#{search}%"])
-    else    
-      Book.all
-    end
-  end
-
   private
 
   def book_params
