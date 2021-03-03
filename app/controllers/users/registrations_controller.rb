@@ -9,12 +9,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /resource
-   def create
+#   POST /resource
+  def create
      @user = User.new(configure_permitted_parameters)
      @user.save
-     ThanksMailer.send_signup_email(@resource).deliver_now
-   end
+     ThanksMailer.send_signup_email(@user).deliver_now
+  end
 
   # GET /resource/edit
   # def edit
