@@ -36,15 +36,15 @@ class User < ApplicationRecord
     followings.include?(user)
   end
     
-  def User.search(search, user_or_book, search_option)
-    if search_option == "1"
-      User.where(['name LIKE ?', "#{search}"])
-    elsif search_option == "2"
-      User.where(['name LIKE ?', "#{search}%"])
-    elsif search_option == "3"
-      User.where(['name LIKE ?', "%#{search}"])
-    elsif search_option == "4"
-      User.where(['name LIKE ?', "%#{search}%"])
+  def User.search(content, method)
+    if method == "perfect"
+      User.where(['name LIKE ?', "#{content}"])
+    elsif method == "forward"
+      User.where(['name LIKE ?', "#{content}%"])
+    elsif method == "backward"
+      User.where(['name LIKE ?', "%#{content}"])
+    elsif method == "part"
+      User.where(['name LIKE ?', "%#{content}%"])
     else    
       User.all
     end

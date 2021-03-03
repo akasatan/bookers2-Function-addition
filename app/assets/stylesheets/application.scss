@@ -43,6 +43,8 @@ div {
 .red-heart:hover, {
   text-decoration: underline red;
 }
-.search{
-  text-align: center;
+.search-form {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
 }

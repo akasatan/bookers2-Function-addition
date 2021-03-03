@@ -1,0 +1,8 @@
+<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.search_field :content %>
+    <%= f.select :model, [["User", "user"],["Book","book"]] %>
+    <%= f.select :method, [["完全一致", "perfect"],["前方一致","forward"],["後方一致","backward"],["部分一致","part"]] %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>

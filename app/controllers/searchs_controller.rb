@@ -1,14 +1,14 @@
 class SearchsController < ApplicationController
       
   def search
-    @search = params[:search]
-    @user_or_book = params[:model_choose]
-    @search_option = params[:option]
-    if @user_or_book == "1"
-      @users = User.search(@search, @user_or_book, @search_option)
+    @content = params[:content]
+    @model = params[:model]
+    @method = params[:method]
+    if @model == 'user'
+      @records = User.search(@content, @method)
     else
       #titleだけヒットするようにしているよ
-      @books = Book.search(@search, @user_or_book, @search_option)
+      @records = Book.search(@content, @method)
     end
   end
   
