@@ -25,6 +25,7 @@ class ChatsController < ApplicationController
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
+    redirect_to chat_path(@chat.room)
   end
 
   private
