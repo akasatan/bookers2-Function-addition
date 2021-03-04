@@ -31,3 +31,6 @@
     # raise e
 #   end
 # end
+
+# whereが上手く使えなかったからviだけでやってみました
+# * * */1 * * /bin/bash -l -c 'cd /home/ec2-user/environment/bookers2-debug && bundle exec rails runner Batch::DailymailSender.daily_mail_batch >> log/cron.log 2>&1'
