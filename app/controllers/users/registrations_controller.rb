@@ -11,9 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 #   POST /resource
   def create
-     @user = User.new(configure_permitted_parameters)
-     @user.save
-     ThanksMailer.send_signup_email(@user).deliver_now
+    super do |resource|
+    ThanksMailer.send_signup_email(resource).deliver_now
+    end
   end
 
   # GET /resource/edit

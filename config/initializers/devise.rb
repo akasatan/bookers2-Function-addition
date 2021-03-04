@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = ENV['USER_NAME']
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'ThanksMailer::Mailer'
+  config.mailer = 'ThanksMailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
