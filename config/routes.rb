@@ -14,6 +14,7 @@ Rails.application.routes.draw do
    resources :book_comments, only: [:create, :destroy]
    resource :favorites, only: [:create, :destroy]
   end
+  resources :chats, only: [:show, :create, :destroy]
   
   get "search" => "searchs#search"
   root to: 'homes#top'

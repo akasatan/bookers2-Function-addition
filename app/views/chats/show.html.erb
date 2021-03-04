@@ -1,0 +1,21 @@
+<%= form_with model: @chat, remote: true do |f| %>
+  <%= f.text_area :message,rows: 1 %>
+  <%= f.hidden_field :room_id %>
+  <%= f.submit %>
+<% end %>
+<table>
+  <tbody>
+    <div class="message">
+      <% @chats.each do |chat| %>
+        <tr class="message_<%= chat.id %>">
+          <td><%= chat.message %></td>
+          <td class="comment_destroy">
+            <% if chat.user == current_user %>
+              <%= link_to 'Destroy', chat_path(chat), method: :delete, class: "btn btn-sm btn-danger destroy_chat_#{chat.id}", remote: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>    
+    </div>
+  </tbody>
+</table>

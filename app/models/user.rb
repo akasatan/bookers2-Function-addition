@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :user_rooms
+  has_many :chats
   
   #userﾃｰﾌﾞﾙ→relationﾃｰﾌﾞﾙ、follower_idをviewに送る（参照）
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

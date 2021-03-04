@@ -29,6 +29,7 @@
   <% if user == current_user %>
     <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
   <% else %>
+  <%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-warning"%>
     <% if current_user.following?(user) %>
       <%= link_to 'フォロー外す', user_relationship_path(user.id), method: :delete, class: "btn btn-info" %>
     <% else %>
