@@ -11,9 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 #   POST /resource
   def create
-    super do |resource|
-    ThanksMailer.send_signup_email(resource).deliver_now
-    end
+    super
+    ThanksMailer.send_signup_email(current_user).deliver_now
   end
 
   # GET /resource/edit
