@@ -3,7 +3,6 @@ class ChatsController < ApplicationController
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
-    # なぜfind_byではなくpluckなのか？解答参照する
     each_room = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     unless each_room.nil?
@@ -26,7 +25,6 @@ class ChatsController < ApplicationController
   def destroy
     @chat = Chat.find(params[:id])
     @chat.destroy
-    redirect_to chat_path(@chat.room)
   end
 
   private

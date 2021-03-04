@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :user_rooms
   has_many :chats
+  has_many :rooms, through: :user_rooms
+  # なぜroomsには定義しないんだ～
   
   #userﾃｰﾌﾞﾙ→relationﾃｰﾌﾞﾙ、follower_idをviewに送る（参照）
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

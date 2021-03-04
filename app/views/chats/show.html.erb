@@ -1,21 +1,19 @@
-<%= form_with model: @chat, remote: true do |f| %>
-  <%= f.text_area :message,rows: 1 %>
-  <%= f.hidden_field :room_id %>
-  <%= f.submit %>
-<% end %>
-<table>
-  <tbody>
-    <div class="message">
-      <% @chats.each do |chat| %>
-        <tr class="message_<%= chat.id %>">
-          <td><%= chat.message %></td>
-          <td class="comment_destroy">
-            <% if chat.user == current_user %>
-              <%= link_to 'Destroy', chat_path(chat), method: :delete, class: "btn btn-sm btn-danger destroy_chat_#{chat.id}", remote: true %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>    
-    </div>
-  </tbody>
-</table>
+<%= render 'layouts/errors', obj: @chat %>
+<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
+<div class="message">
+  <%= form_with model: @chat, remote: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit %>
+  <% end %>
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <p style="text-align: right;">
+        <%= chat.message %>
+        <%= link_to 'Destroy', chat_path(chat), method: :delete, class: "btn btn-sm btn-danger destroy_chat_#{chat.id}", remote: true %>
+      <p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
+</div>
