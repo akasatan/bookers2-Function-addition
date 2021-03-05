@@ -18,19 +18,16 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = Rails.env.to_sym
-set :environment, rails_env
-set :output, 'log/cron.log'
+# require File.expand_path(File.dirname(__FILE__) + "/environment")
+# rails_env = Rails.env.to_sym
+# set :environment, rails_env
+# set :output, 'log/cron.log'
 
-every 1.day do
-  begin
-    runner 'Batch::DailymailSender.daily_mail_batch'
-  rescue => e
-    Rails.logger.error('aborted rails runner')
-    raise e
-  end
-end
-
-# whereが上手く使えなかったからviだけでやってみました
-# * * */1 * * /bin/bash -l -c 'cd /home/ec2-user/environment/bookers2-debug && bundle exec rails runner Batch::DailymailSender.daily_mail_batch >> log/cron.log 2>&1'
+# every 1.day do
+  # begin
+    # runner 'Batch::DailymailSender.daily_mail_batch'
+  # rescue => e
+    # Rails.logger.error('aborted rails runner')
+    # raise e
+  # end
+# end

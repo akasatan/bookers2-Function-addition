@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a practice program for Dmm Webcamp.
 
-Things you may want to cover:
+This is a book introduction site.
 
-* Ruby version
+You can "post a book", "comment", "chat (only 2 people)", "like", and "follow".
 
-* System dependencies
+Asynchronous communication is incomplete.
 
-* Configuration
+Is this the end of the README task? ??
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+　 　 　Λ＿Λ
+　　　(・∀・ ）　Thank you for reading README!!
+ 　　＿φ＿__⊂)__
+.　／旦／三／ ／|
+　|￣￣￣￣￣|　|
+　|愛媛みかん|／
