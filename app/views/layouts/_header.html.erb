@@ -7,19 +7,21 @@
         <span class="HamburgerIconTrigger__line--middle"></span>
         <span class="HamburgerIconTrigger__line--bottom"></span>
       </a>
+    </div>
     <div>
-      <ul class="navbar">
+      <ul class="Navbar">
       <% if user_signed_in? %>
-        <li class="navbar__item"><%= link_to ' Home',user_path(current_user),class: 'navbar__item fas fa-home' %></li>
-        <li class="navbar__item"><%= link_to ' Users',users_path,class: 'navbar__item fas fa-users' %></li>
-        <li class="navbar__item"><%= link_to ' Books',books_path ,class: 'navbar__item fas fa-book-open'%></li>
-        <li class="navbar__item"><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'navbar__item fas fa-sign-out-alt ' %></li>
+        <li class="Navbar__item"><%= link_to ' Home',user_path(current_user),class: 'Navbar__item--col fas fa-home' %></li>
+        <li class="Navbar__item"><%= link_to ' Users',users_path,class: 'Navbar__item--col fas fa-users' %></li>
+        <li class="Navbar__item"><%= link_to ' Books',books_path ,class: 'Navbar__item--col fas fa-book-open'%></li>
+        <li class="Navbar__item"><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'Navbar__item--col fas fa-sign-out-alt ' %></li>
       <% else %>
-        <li class="navbar__item"><%= link_to ' Home',root_path,class: 'fas fa-home' %></li>
-        <li class="navbar__item"><%= link_to ' About',home_about_path,class: 'fas fa-link' %></li>
-        <li class="navbar__item"><%= link_to ' sign up', new_user_registration_path,class: 'fas fa-user-plus' %></li>
-        <li class="navbar__item"><%= link_to ' login', new_user_session_path ,class: 'fas fa-sign-in-alt'%></li>
+        <li class="Navbar__item"><%= link_to ' Home',root_path,class: 'Navbar__item--col fas fa-home' %></li>
+        <li class="Navbar__item"><%= link_to ' About',home_about_path,class: 'Navbar__item--col fas fa-link' %></li>
+        <li class="Navbar__item"><%= link_to ' sign up', new_user_registration_path,class: 'Navbar__item--col fas fa-user-plus' %></li>
+        <li class="Navbar__item"><%= link_to ' login', new_user_session_path ,class: 'Navbar__item--col fas fa-sign-in-alt'%></li>
       <% end %>
       </ul>
+    </div>
   </nav>
 </header>

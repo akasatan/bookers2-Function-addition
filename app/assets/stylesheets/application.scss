@@ -28,9 +28,6 @@
   color: green;
 }
 
-#error_explanation {
-  color: red;
-}
 
 div {
   &.field, &.actions {
@@ -39,7 +36,7 @@ div {
 }
 
 .search-form {
-  padding: 5px;
+  padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }

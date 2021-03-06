@@ -20,11 +20,18 @@
 //= require jquery.jpostal
 
 $(function() {
-  $('.HamburgerIconTrigger').on('click', function(event) {
-    $('.HamburgerIconTrigger__line--top').toggleClass('active');
-    $('.HamburgerIconTrigger__line--middle').toggleClass('active');
-    $('.HamburgerIconTrigger__line--bottom').toggleClass('active');
-    $('.navbar__item').fadeToggle();
-    event.preventDefault();
+  $(document).on('turbolinks:load', () => {
+    $('.HamburgerIconTrigger').on('click', function(event) {
+      $('.HamburgerIconTrigger__line--top').toggleClass('active');
+      $('.HamburgerIconTrigger__line--middle').toggleClass('active');
+      $('.HamburgerIconTrigger__line--bottom').toggleClass('active');
+      $('.Navbar').fadeToggle();
+      event.preventDefault();
+    });
   });
 });
+
+$(function() {
+    $('#ErrorExplanation').fadeIn(1000);
+});
+// これ機能してない修正する
