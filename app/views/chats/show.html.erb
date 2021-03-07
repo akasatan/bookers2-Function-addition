@@ -1,19 +1,6 @@
 <%= render 'layouts/errors', obj: @chat %>
 <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
-<div class="message">
-  <%= form_with model: @chat, remote: true do |f| %>
-    <%= f.text_field :message %>
-    <%= f.hidden_field :room_id %>
-    <%= f.submit %>
-  <% end %>
-  <% @chats.each do |chat| %>
-    <% if chat.user_id == current_user.id %>
-      <p class="chat-message-{#chat.id}" style="text-align: right;">
-        <%= chat.message %>
-        <%= link_to 'Destroy', chat_path(chat), method: :delete, class: "btn btn-sm btn-danger destroy_chat_{#chat.id}", remote: true %>
-      <p>
-    <% else %>
-      <p style="text-align: left;"><%= chat.message %></p>
-    <% end %>
-  <% end %>
+<div class="ChatRoomBox">
+  <%= render 'chats/form', chat: @chat %>
+  <%= render 'chats/index', chats: @chats %>
 </div>

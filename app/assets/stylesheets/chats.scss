@@ -1,7 +1,11 @@
 // Place all the styles related to the chats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.message {
-  margin-left: 100px;
-	width: 400px;
+.ChatRoomBox {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.chat-message{
+    display: none;
 }
