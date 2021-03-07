@@ -1,0 +1,3 @@
+$(".user-index").html("<%= j(render 'users/index', users: @users) %>");
+$(".current_user-info").html("<%= j(render 'users/info', user: @current_user) %>");
+$(".user-info").html("<%= j(render 'users/info', user: @user) %>");

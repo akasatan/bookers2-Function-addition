@@ -7,11 +7,11 @@
   <tr>
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
-  </tr>
+  </tr> 
   <tr>
     <th>follows</th>
     <th><!--user.idがshow画面、follow_idにuser.idが入るという事？なるほど分からん-->
-      <%= link_to followings_user_relationship_path(user.id, user.id) do %>
+      <%= link_to followings_user_relationship_path(user.id, user.id), remote: true do %>
         <%= user.followings.count %>
       <% end %>
     </th>
@@ -19,7 +19,7 @@
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to followers_user_relationship_path(user.id, user.id) do %>
+      <%= link_to followers_user_relationship_path(user.id, user.id), remote: true do %>
         <%= user.followers.count %>
       <% end %>
     </th>
@@ -29,11 +29,11 @@
   <% if user == current_user %>
     <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
   <% else %>
-  <%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-warning"%>
+  <%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-warning text-light m-1"%>
     <% if current_user.following?(user) %>
-      <%= link_to 'フォロー外す', user_relationship_path(user.id), method: :delete, class: "btn btn-info" %>
+      <%= link_to 'フォロー外す', user_relationship_path(user.id, user.id), method: :delete, remote: true, class: "btn btn-info m-1" %>
     <% else %>
-      <%= link_to 'フォローする', user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+      <%= link_to 'フォローする', user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-success m-1" %>
     <% end %>
   <% end %>
 </div>
