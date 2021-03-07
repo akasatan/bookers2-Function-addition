@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', obj: @chat %>
-<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
 <div class="ChatRoomBox">
+  <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
   <%= render 'chats/form', chat: @chat %>
   <%= render 'chats/index', chats: @chats %>
 </div>

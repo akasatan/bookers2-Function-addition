@@ -30,3 +30,11 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  $(document).on('turbolinks:load', () => {
+    $('button').on('click', function() {
+      $('.message').toggle();
+    });
+  });
+});

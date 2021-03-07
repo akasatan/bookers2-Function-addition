@@ -11,7 +11,7 @@
   <tr>
     <th>follows</th>
     <th><!--user.idがshow画面、follow_idにuser.idが入るという事？なるほど分からん-->
-      <%= link_to followings_user_relationship_path(user.id, user.id), remote: true do %>
+      <%= link_to followings_user_relationship_path(user.id, user.id) do %>
         <%= user.followings.count %>
       <% end %>
     </th>
@@ -19,7 +19,7 @@
   <tr>
     <th>followers</th>
     <th>
-      <%= link_to followers_user_relationship_path(user.id, user.id), remote: true do %>
+      <%= link_to followers_user_relationship_path(user.id, user.id) do %>
         <%= user.followers.count %>
       <% end %>
     </th>
@@ -31,9 +31,9 @@
   <% else %>
   <%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-warning text-light m-1"%>
     <% if current_user.following?(user) %>
-      <%= link_to 'フォロー外す', user_relationship_path(user.id, user.id), method: :delete, remote: true, class: "btn btn-info m-1" %>
+      <%= link_to 'unfollow', user_relationship_path(user.id, user.id), method: :delete, remote: true, class: "btn btn-info m-1" %>
     <% else %>
-      <%= link_to 'フォローする', user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-success m-1" %>
+      <%= link_to 'follow', user_relationships_path(user.id), method: :post, remote: true, class: "btn btn-success m-1" %>
     <% end %>
   <% end %>
 </div>
