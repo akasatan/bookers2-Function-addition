@@ -30,8 +30,3 @@ $(function() {
     });
   });
 });
-
-$(function() {
-    $('#ErrorExplanation').fadeIn(1000);
-});
-// これ機能してない修正する

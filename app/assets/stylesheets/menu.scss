@@ -2,8 +2,8 @@
   position: fixed;
   top: 0;
   background-color: grey;
-  height: 60px;
   width: 100%;
+  z-index: 10000000;
 }
 
 .Logo{
@@ -21,6 +21,7 @@
   position: fixed;
   top: 0;
   right: 0;
+  margin-bottom: 60px;
   font-size: 20px;
   list-style: none;
   text-decoration: none;
@@ -51,7 +52,6 @@
     width: 50px;
     justify-content: center;
     align-items: center;
-    z-index: 10;
     background-color: black;
     
     &__line{
@@ -103,11 +103,10 @@
     background-color: gray;
     list-style: none;
     display: none;
-    z-index: 100;
   
     &__item{
-      margin: 20px;
       font-size: 20px;
+      z-index: 20;
       
       &--col{
         color: white;

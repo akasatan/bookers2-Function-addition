@@ -35,8 +35,21 @@ div {
   }
 }
 
+
+.PageContainer{
+  margin-top: 70px;
+  // headerのfixed回避用
+}
+
 .search-form {
   padding: 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+@media screen and (max-width:1024px) {
+  .PageContainer{
+    margin-top: 70px;
+    // headerのfixed回避用
+  }
 }
