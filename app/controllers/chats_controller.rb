@@ -19,7 +19,9 @@ class ChatsController < ApplicationController
   
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
+    unless @chat.save
+      render 'error'
+    end
   end
   
   def destroy

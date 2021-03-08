@@ -2,9 +2,9 @@
   
   <% chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
-      <p style="text-align: right;">
+      <p class="chat-message-<%= chat.id %>" style="text-align: right;">
         <%= chat.message %>
-        <%= link_to 'Destroy', chat_path(chat), remote: true, method: :delete, class: "destroy_chat_button" %>
+        <%= link_to 'Destroy', chat_path(chat), remote: true, method: :delete, class: "btn btn-sm btn-danger destroy_chat_#{chat.id}" %>
       </p>
     <% else %>
       <p style="text-align: left;"><%= chat.message %></p>
